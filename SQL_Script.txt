@@ -1,0 +1,35 @@
+
+CREATE DATABASE IF NOT EXISTS Books;
+USE Books;
+
+
+CREATE TABLE user (
+    uid BIGINT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL
+);
+
+
+CREATE TABLE book (
+    isbn VARCHAR(20) PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    author VARCHAR(255) NOT NULL,
+    publication_year INT NOT NULL
+);
+
+
+INSERT INTO book (isbn, title, author, publication_year) VALUES
+('9780321356680', 'Java Concurrency in Practice', 'Brian Goetz', 2006),
+('9781492072508', 'Learning Spring Boot 3.0', 'Greg L. Turnquist', 2023),
+('9780132350884', 'Clean Code', 'Robert C. Martin', 2008);
+
+
+INSERT INTO user (username, password) VALUES
+('maria', '$2a$10$yXasUu4nL1tKeZ9eZhF.XOBQRAbkTxaMJpjW8K7iH9JG13ae9mMJK'),
+('nathan', '$2a$10$H4G8Lzn3rS1jWvQzK2rpl.GiPgFweYIbRIgNvZyXKMeTf16Zch78y'),
+('elena', '$2a$10$XfGfy9dGy0TRZ3gK4a1ZkOYpmIYrXY.rYkgI38JcFh20RI/r7A4kK');
+
+
+UPDATE user SET password = '$2a$10$nTwLJZK0IRzKvd9x0lxgmuDEhN0OtuU3x6RczTQjMsNDOMnFUwSkK' WHERE uid = 1; -- maria123
+UPDATE user SET password = '$2a$10$JuwAfQ9aY2yOLkYQ4AAlEeqbSckwHxlvIlHV6ZskD3wa4snx4xtdG' WHERE uid = 2; -- nathan123
+UPDATE user SET password = '$2a$10$q43KhvK/TKUplZ3lVG1SxOfkJD4zhDUV8sH.gmpBrZUGqtMz3D3nO' WHERE uid = 3; -- elena123

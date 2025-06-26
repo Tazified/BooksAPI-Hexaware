@@ -1,0 +1,130 @@
+Authentication API Endpoints
+Base URL: http://localhost:2525/auth
+
+Register New User
+
+Method: POST
+
+Endpoint: /auth/register
+
+Header: Content-Type: application/json
+
+Request Body:
+{
+"username": "john_doe",
+"password": "password123"
+}
+
+Response:
+"User registered successfully"
+
+Note: Passwords are securely hashed using encryption before storing.
+
+Login and Get Token
+
+Method: POST
+
+Endpoint: /auth/login
+
+Header: Content-Type: application/json
+
+Request Body:
+{
+"username": "john_doe",
+"password": "password123"
+}
+
+Response:
+Returns a JWT token:
+{
+"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+}
+
+This token must be sent in the headers for accessing protected routes.
+
+Book API Endpoints
+Base URL: http://localhost:2525/books
+
+Add a Book
+
+Method: POST
+
+Endpoint: /books
+
+Header: Content-Type: application/json
+
+Request Body:
+{
+"isbn": "1234567890",
+"title": "Spring Boot Essentials",
+"author": "Jane Smith",
+"publicationYear": 2024
+}
+
+Response: Returns the saved book data.
+
+Get All Books
+
+Method: GET
+
+Endpoint: /books/all
+
+Description: Fetches all books from the database.
+
+Sample Response:
+[
+{
+"isbn": "1234567890",
+"title": "Sample Book",
+"author": "John Doe",
+"publicationYear": 2020
+}
+]
+
+Get Book by ISBN
+
+Method: GET
+
+Endpoint: /books/{isbn}
+
+Example: /books/1234567890
+
+Description: Retrieves book information by its ISBN.
+
+Response:
+{
+"isbn": "1234567890",
+"title": "Sample Book",
+"author": "John Doe",
+"publicationYear": 2020
+}
+
+Update Book
+
+Method: PUT
+
+Endpoint: /books/{isbn}
+
+Header: Content-Type: application/json
+
+Request Body:
+{
+"isbn": "1234567890",
+"title": "Updated Title",
+"author": "Updated Author",
+"publicationYear": 2025
+}
+
+Response: Updated book data is returned.
+
+Delete Book
+
+Method: DELETE
+
+Endpoint: /books/{isbn}
+
+Example: /books/1234567890
+
+Response:
+"Book with ISBN 1234567890 deleted successfully."
+
